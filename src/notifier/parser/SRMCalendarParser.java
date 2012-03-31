@@ -93,4 +93,7 @@ public class SRMCalendarParser {
 		return dates;
 	}
 
+	public static SimpleDateFormat getDataFormat() {
+		return format;
+	}
 }

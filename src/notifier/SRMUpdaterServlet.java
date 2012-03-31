@@ -19,6 +19,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import notifier.parser.SRMCalendarParser;
+
 import org.htmlparser.Node;
 import org.htmlparser.Parser;
 import org.htmlparser.filters.HasAttributeFilter;
@@ -33,14 +35,9 @@ import org.htmlparser.util.SimpleNodeIterator;
 public class SRMUpdaterServlet extends HttpServlet {
 	private static final Logger log = Logger.getLogger(SRMNotifierServlet.class
 			.getName());
-	private static final SimpleDateFormat format;
 	private static final int updateScheduleHour = 15;
 	private static final String[] months = { "jan", "feb", "mar", "apr", "may",
 			"jun", "jul", "aug", "sep", "oct", "nov", "dec" };
-	static {
-		format = new SimpleDateFormat("yyyy年MM月dd日（E） HH時mm分", Locale.JAPAN);
-		format.setTimeZone(TimeZone.getTimeZone("GMT+09:00"));
-	}
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -49,7 +46,8 @@ public class SRMUpdaterServlet extends HttpServlet {
 		Date now = cal.getTime();
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		try {
-			log.info("[" + now + ":" + format.format(now) + "]");
+			log.info("[" + now + ":"
+					+ SRMCalendarParser.getDataFormat().format(now) + "]");
 			updateSRM(pm, now, "thisMonth");
 			// 次の月のSRM更新を一日に一回
 			if (cal.get(Calendar.HOUR_OF_DAY) == updateScheduleHour) {
