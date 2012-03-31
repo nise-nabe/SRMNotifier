@@ -75,7 +75,13 @@ public class SRMNotifierServlet extends HttpServlet {
 			while (now.after(target)) { // version5
 				// 通知判定
 				if (now.before(new Date(target.getTime() + toLong(1, 4)))) { //
-					post(msgs[srm.getCount()], srm, target);
+					String notifyDate = "at " + format.format(target);
+					if (srm.getCount() < 3) {
+						notifyDate = "登録開始時間: " + format.format(srm.getRegisterTime());
+					} else if (srm.getCount() < 8) {
+						notifyDate = "開始時間: " + format.format(srm.getCompetisionTime());
+					}
+					post(msgs[srm.getCount()], srm, notifyDate);
 				}
 				srm.setCount(srm.getCount() + 1);
 				// SRM終了判定
@@ -119,12 +125,11 @@ public class SRMNotifierServlet extends HttpServlet {
 		return srm;
 	}
 
-	private void post(String msg, SRM srm, Date date) throws TwitterException {
+	private void post(String msg, SRM srm, String date) throws TwitterException {
 		// Twitter twitter;
 		// SRM 463 終了しました at 2010年03月02日（火） 22時35分 #Topcoder #SRM
-		String status = srm.getName() + " " + msg + " at "
-				+ format.format(date);
-		if(2 <= srm.getCount() && srm.getCount() <= 7){
+		String status = srm.getName() + " " + msg + " " + date;
+		if (2 <= srm.getCount() && srm.getCount() <= 7) {
 			status += " Arena -> http://bit.ly/gloK93";
 		}
 		status += " " + hash;
