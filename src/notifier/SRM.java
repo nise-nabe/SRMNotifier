@@ -32,8 +32,8 @@ public class SRM {
 
 	public String toString() {
 		return this.getClass().getName() + "[name=" + name + ",url=" + url
-				+ ",competisionTime=" + competisionTime + ",count=" + count
-				+ "]";
+				+ ",competisionTime=" + competisionTime + ",regiserTime="
+				+ registerTime + ",count=" + count + "]";
 	}
 
 	public String getName() {
@@ -90,6 +90,7 @@ public class SRM {
 	public void update(SRM update) {
 		this.name = update.name;
 		this.url = update.url;
+		this.registerTime = update.registerTime;
 		this.competisionTime = update.competisionTime;
 		this.count = update.count;
 	}
