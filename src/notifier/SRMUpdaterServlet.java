@@ -33,13 +33,12 @@ import org.htmlparser.util.SimpleNodeIterator;
 public class SRMUpdaterServlet extends HttpServlet {
 	private static final Logger log = Logger.getLogger(SRMNotifierServlet.class
 			.getName());
-	private static final Locale japan = Locale.JAPAN;
 	private static final SimpleDateFormat format;
 	private static final int updateScheduleHour = 15;
 	private static final String[] months = { "jan", "feb", "mar", "apr", "may",
 			"jun", "jul", "aug", "sep", "oct", "nov", "dec" };
 	static {
-		format = new SimpleDateFormat("yyyy年MM月dd日（E） HH時mm分", japan);
+		format = new SimpleDateFormat("yyyy年MM月dd日（E） HH時mm分", Locale.JAPAN);
 		format.setTimeZone(TimeZone.getTimeZone("GMT+09:00"));
 	}
 
