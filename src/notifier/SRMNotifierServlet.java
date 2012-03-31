@@ -16,6 +16,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import notifier.parser.SRMCalendarParser;
+
 import twitter4j.TwitterException;
 
 // コミット履歴
@@ -34,9 +36,8 @@ import twitter4j.TwitterException;
 public class SRMNotifierServlet extends HttpServlet {
 	private static final Logger log = Logger.getLogger(SRMNotifierServlet.class
 			.getName());
-	private static final Locale japan = Locale.JAPAN;
 	private static final String hash = "#Topcoder #SRM";
-	private static final SimpleDateFormat format;
+	private static final SimpleDateFormat format = SRMCalendarParser.getDataFormat();
 	private static final String[] msgs = { "開始24時間前です", "開始12時間前です",
 			"登録を開始しました", "開始1時間前です", "開始30分前です", "開始15分前です", "開始5分前です",
 			"Coding Phase を開始しました", "Coding Phase を終了しました",
@@ -44,10 +45,6 @@ public class SRMNotifierServlet extends HttpServlet {
 	private static final long[] dates = { -toLong(24, 60), -toLong(12, 60),
 			-toLong(3, 60), -toLong(1, 60), -toLong(1, 30), -toLong(1, 15),
 			-toLong(1, 5), 0, toLong(1, 75), toLong(1, 80), toLong(1, 95) };
-	static {
-		format = new SimpleDateFormat("yyyy年MM月dd日（E） HH時mm分", japan);
-		format.setTimeZone(TimeZone.getTimeZone("GMT+09:00"));
-	}
 
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
