@@ -106,9 +106,8 @@ public class SRMUpdaterServlet extends HttpServlet {
 			Parser parser = new Parser(
 					"http://www.topcoder.com/tc?module=Static&d1=calendar&d2="
 							+ month);
-			log
-					.info("カレンダー取得 from http://www.topcoder.com/tc?module=Static&d1=calendar&d2="
-							+ month);
+			log.info("カレンダー取得 from http://www.topcoder.com/tc?module=Static&d1=calendar&d2="
+					+ month);
 			NodeList list = parser
 					.parse(new HasAttributeFilter("class", "srm"));
 			SimpleNodeIterator it = list.elements();
