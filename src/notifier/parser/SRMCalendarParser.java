@@ -34,6 +34,10 @@ public class SRMCalendarParser {
 		this.url = url;
 	}
 
+	public String getUrl() {
+		return this.url;
+	}
+
 	public List<SRM> getSRMs() {
 		ArrayList<SRM> result = new ArrayList<SRM>();
 		try {
