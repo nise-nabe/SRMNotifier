@@ -102,12 +102,11 @@ public class SRMUpdaterServlet extends HttpServlet {
 
 	private ArrayList<SRM> getSRMs(String month) {
 		ArrayList<SRM> result = new ArrayList<SRM>();
+		String url = "http://community.topcoder.com/tc?module=Static&d1=calendar&d2="
+				+ month;
 		try {
-			Parser parser = new Parser(
-					"http://www.topcoder.com/tc?module=Static&d1=calendar&d2="
-							+ month);
-			log.info("カレンダー取得 from http://www.topcoder.com/tc?module=Static&d1=calendar&d2="
-					+ month);
+			Parser parser = new Parser(url);
+			log.info("カレンダー取得 from " + url);
 			NodeList list = parser
 					.parse(new HasAttributeFilter("class", "srm"));
 			SimpleNodeIterator it = list.elements();
