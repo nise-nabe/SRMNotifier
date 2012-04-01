@@ -7,7 +7,6 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Locale;
-import java.util.TimeZone;
 import java.util.logging.Logger;
 
 import javax.jdo.PersistenceManager;
@@ -17,7 +16,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import notifier.parser.SRMCalendarParser;
-
 import twitter4j.TwitterException;
 
 // コミット履歴
