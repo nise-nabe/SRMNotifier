@@ -17,8 +17,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import notifier.parser.SRMCalendarParser;
 
-//履歴
-//2010/5/4 16:30 作成
 @SuppressWarnings("serial")
 public class SRMUpdaterServlet extends HttpServlet {
 	private static final Logger log = Logger.getLogger(SRMNotifierServlet.class
@@ -71,9 +69,6 @@ public class SRMUpdaterServlet extends HttpServlet {
 				}
 			}
 		}
-		// insert new dates
-		// SRM nearest = getNearestSRM(pm); // 2010/7/19 19:18
-		// 更新通知に必要だけどいらないので無効化
 		for (SRM update : updates) {
 			log.info("追加する？ :" + "[update=" + update + "]" + "[now=" + now
 					+ "] u.isafter(n) " + update.getRegisterTime().after(now));

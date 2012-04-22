@@ -18,18 +18,6 @@ import javax.servlet.http.HttpServletResponse;
 import notifier.parser.SRMCalendarParser;
 import twitter4j.TwitterException;
 
-// コミット履歴
-// 2010/3/13 03:09
-// 2010/3/14 00:19
-// 2010/5/5  02:14
-// 2010/5/5  21:09 更新時間の変更（テスト環境）
-// 2010/5/6  05:11 更新方法の更新（テスト環境）＆twitter4jアップグレード
-// 2010/5/12 07:41 本番環境にシフト
-// 2010/5/27 03:00 ついったークラスを別に保持する．変更通知を行う．(テスト環境)
-// 2010/12/22 06:40 次の年のSRM取得ができてないバグを修正
-// 2010/12/22 06:40 twitter4jを2.1.3から2.1.9にアップグレード
-// 2010/12/22 07:10 本番環境にver3でアップロード
-// 2011/03/18 23:20 通知時間を30分前および15分前を追加＋Arenaの短縮URLを表示
 @SuppressWarnings("serial")
 public class SRMNotifierServlet extends HttpServlet {
 	private static final Logger log = Logger.getLogger(SRMNotifierServlet.class
@@ -66,8 +54,7 @@ public class SRMNotifierServlet extends HttpServlet {
 			log.info("通知判定 [now:" + format.format(now) + "].after[target:"
 					+ format.format(target) + "]==" + now.after(target));
 			log.info("通知判定 " + now.after(target));
-			// if (now.after(target)) { // version2
-			while (now.after(target)) { // version5
+			while (now.after(target)) {
 				// 通知判定
 				if (now.before(new Date(target.getTime() + toLong(1, 4)))) { //
 					String notifyDate = "at " + format.format(target);
