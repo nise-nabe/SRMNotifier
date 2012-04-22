@@ -72,8 +72,6 @@ public class SRMNotifierServlet extends HttpServlet {
 				if (now.before(new Date(target.getTime() + toLong(1, 4)))) { //
 					String notifyDate = "at " + format.format(target);
 					if (srm.getCount() < 3) {
-						notifyDate = "登録開始時間: " + format.format(srm.getRegisterTime());
-					} else if (srm.getCount() < 8) {
 						notifyDate = "開始時間: " + format.format(srm.getCompetisionTime());
 					}
 					post(msgs[srm.getCount()], srm, notifyDate);
