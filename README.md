@@ -1,7 +1,9 @@
 SRMNotifier
 ===========
 
-This is a notifier for topcoder SRM.
+This is a notifier for topcoder SRM using twitter.
+
+https://twitter.com/#!/tc_srm_jp_bot
 
 How to Develop
 --------------
