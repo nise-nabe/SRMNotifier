@@ -32,3 +32,5 @@ appengine-web.xml
 *.class
 
 build.properties
+
+war/WEB-INF/appengine-generated/
