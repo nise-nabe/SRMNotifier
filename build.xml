@@ -37,4 +37,15 @@
 			debug="on"
 			includeantruntime="false" />
 	</target>
+
+	<target name="datanucleusenhance"
+		description="Performs JDO enhancement on compiled data classes.">
+		<enhance_war war="war" />
+	</target>
+
+	<target name="runserver"
+		description="Starts the development server.">
+		<dev_appserver war="war" />
+	</target>
+
 </project>
