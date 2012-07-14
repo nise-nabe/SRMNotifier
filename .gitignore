@@ -30,3 +30,5 @@ appengine-web.xml
 
 #  Java.gitignore
 *.class
+
+build.properties
