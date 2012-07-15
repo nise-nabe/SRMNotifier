@@ -28,7 +28,7 @@
 	</target>
 
 	<target name="test" depends="compile">
-		<junit haltonerror="true">
+		<junit haltonerror="true" haltonfailure="true">
 			<formatter type="plain" usefile="false" />
 			<batchtest fork="yes" todir="reports">
 				<fileset dir="src/">
