@@ -20,6 +20,11 @@
 				<include name="**/*.jar" />
 			</fileset>
 		</copy>
+		<copy todir="appengine-lib" flatten="true">
+			<fileset dir="${sdk.dir}/lib">
+				<include name="shared/**/*.jar" />
+			</fileset>
+		</copy>
 	</target>
 
 	<target name="compile"
