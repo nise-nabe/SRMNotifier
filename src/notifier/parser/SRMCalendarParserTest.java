@@ -26,7 +26,7 @@ public class SRMCalendarParserTest {
 
 	@Test
 	public void printSRMs() throws Exception {
-		Locale.setDefault(Locale.JAPAN);
+		System.out.println(Locale.getDefault());
 		SRMCalendarParserMock parser = new SRMCalendarParserMock("http://community.topcoder.com/tc?module=Static&d1=calendar&d2=thisMonth");
 		List<SRM> srms = parser.getSRMs();
 
