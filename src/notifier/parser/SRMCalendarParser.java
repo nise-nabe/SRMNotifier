@@ -1,5 +1,8 @@
 package notifier.parser;
 
+import java.io.IOException;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
 import java.text.SimpleDateFormat;
@@ -11,15 +14,11 @@ import java.util.TimeZone;
 import java.util.logging.Logger;
 import java.util.regex.Pattern;
 
-import notifier.SRM;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
 
-import org.htmlparser.Node;
-import org.htmlparser.Parser;
-import org.htmlparser.filters.HasAttributeFilter;
-import org.htmlparser.filters.TagNameFilter;
-import org.htmlparser.tags.LinkTag;
-import org.htmlparser.util.NodeList;
-import org.htmlparser.util.SimpleNodeIterator;
+import notifier.SRM;
 
 public class SRMCalendarParser {
 	private static final Logger log = Logger.getLogger(SRMCalendarParser.class
@@ -40,31 +39,32 @@ public class SRMCalendarParser {
 		return this.url;
 	}
 
+	protected String getContent(String url) throws IOException{
+		BufferedReader br = new BufferedReader(new InputStreamReader(new URL(url).openConnection().getInputStream()));
+		StringBuilder sb = new StringBuilder();
+		for(String line; (line = br.readLine()) != null;) {
+			sb.append(line);
+			sb.append("\n");
+		}
+		return sb.toString();
+	}
+
 	public List<SRM> getSRMs() {
 		ArrayList<SRM> result = new ArrayList<SRM>();
 		try {
-			URLConnection conn = new URL(url).openConnection();
-			Parser parser = new Parser(conn);
+			Document doc = Jsoup.parse(getContent(url));
 			log.info("カレンダー取得 from " + url);
-			NodeList list = parser
-					.parse(new HasAttributeFilter("class", "srm"));
-			SimpleNodeIterator it = list.elements();
-			while (it.hasMoreNodes()) {
-				NodeList children = it.nextNode().getChildren();
-				children.keepAllNodesThatMatch(new TagNameFilter("a"));
-				Node a = children.elementAt(0);
-				if (a instanceof LinkTag) {
-					LinkTag link = (LinkTag) a;
-					SRM srm = new SRM();
-					srm.setName(link.toPlainTextString());
-					srm.setUrl(link.getLink());
-					List<Date> dates = getTimes(srm.getUrl());
-					srm.setRegisterTime(dates.get(0));
-					srm.setCompetisionTime(dates.get(1));
-					srm.setCount(0);
-					result.add(srm);
-					log.info("SRMデータ解析 : " + srm);
-				}
+			for(Element elem : doc.getElementsByClass("srm")){
+				Element link = elem.getElementsByTag("a").get(0);
+				SRM srm = new SRM();
+				srm.setName(link.text());
+				srm.setUrl(link.attr("href"));
+				List<Date> dates = getTimes("http://community.topcoder.com" + srm.getUrl());
+				srm.setRegisterTime(dates.get(0));
+				srm.setCompetisionTime(dates.get(1));
+				srm.setCount(0);
+				result.add(srm);
+				log.info("SRMデータ解析 : " + srm);
 			}
 		} catch (Exception e) {
 			log.warning(e.getMessage());
@@ -75,15 +75,10 @@ public class SRMCalendarParser {
 	private List<Date> getTimes(String url) {
 		ArrayList<Date> dates = new ArrayList<Date>();
 		try {
-			URLConnection conn = new URL(url).openConnection();
-			Parser parser = new Parser(conn);
-			NodeList list = parser.parse(new HasAttributeFilter("class",
-					"statText"));
-			SimpleNodeIterator it = list.elements();
+			Document doc = Jsoup.parse(getContent(url));
 			String day = "";
-			while (it.hasMoreNodes()) {
-				Node node = it.nextNode();
-				String text = node.toPlainTextString().replaceAll("\\s", "");
+			for(Element elem: doc.getElementsByClass("statText")) {
+				String text = elem.text().replaceAll("\\s", "");
 				if (Pattern.matches("..\\..+", text)) {
 					day = text;
 				} else {
@@ -93,7 +88,6 @@ public class SRMCalendarParser {
 					dates.add(parse);
 					log.info("データ取得 from " + url + ",date=" + day + text
 							+ " to " + parse + " and " + format.format(parse));
-
 				}
 			}
 		} catch (Exception e) {
