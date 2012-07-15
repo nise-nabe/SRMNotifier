@@ -53,7 +53,7 @@
 		<dev_appserver war="war" />
 	</target>
 
-	<target name="test" depends="compile">
+	<target name="test" depends="datanucleusenhance">
 		<junit haltonerror="true">
 			<formatter type="plain" usefile="false" />
 			<batchtest fork="yes">

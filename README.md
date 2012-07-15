@@ -13,3 +13,7 @@ Execute following Command, and edit for your enviromnent.
     $ cp src/twitter4j.properties.sample src/twitter4j.properties
     $ cp war/WEB-INF/appengine-web.xml.sample war/WEB-INF/appengine-web.xml
     $ cp build.properties.sample build.properties
+
+Run test
+
+    $ ant test
