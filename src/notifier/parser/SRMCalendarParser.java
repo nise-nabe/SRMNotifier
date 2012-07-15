@@ -1,5 +1,7 @@
 package notifier.parser;
 
+import java.net.URL;
+import java.net.URLConnection;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -41,7 +43,8 @@ public class SRMCalendarParser {
 	public List<SRM> getSRMs() {
 		ArrayList<SRM> result = new ArrayList<SRM>();
 		try {
-			Parser parser = new Parser(url);
+			URLConnection conn = new URL(url).openConnection();
+			Parser parser = new Parser(conn);
 			log.info("カレンダー取得 from " + url);
 			NodeList list = parser
 					.parse(new HasAttributeFilter("class", "srm"));
@@ -72,7 +75,8 @@ public class SRMCalendarParser {
 	private List<Date> getTimes(String url) {
 		ArrayList<Date> dates = new ArrayList<Date>();
 		try {
-			Parser parser = new Parser(url);
+			URLConnection conn = new URL(url).openConnection();
+			Parser parser = new Parser(conn);
 			NodeList list = parser.parse(new HasAttributeFilter("class",
 					"statText"));
 			SimpleNodeIterator it = list.elements();
