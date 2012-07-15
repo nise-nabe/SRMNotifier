@@ -22,7 +22,7 @@
 		</copy>
 	</target>
 
-	<target name="compile" depends="copyjars"
+	<target name="compile"
 		description="Compiles Java source and copies other source files to the WAR.">
 		<mkdir dir="war/WEB-INF/classes" />
 		<copy todir="war/WEB-INF/classes">
@@ -46,6 +46,18 @@
 	<target name="runserver"
 		description="Starts the development server.">
 		<dev_appserver war="war" />
+	</target>
+
+	<target name="test" depends="compile">
+		<junit haltonerror="true">
+			<formatter type="plain" usefile="false" />
+			<batchtest fork="yes" todir="reports">
+				<fileset dir="src/">
+					<include name="**/*Test.java"/>
+				</fileset>
+			</batchtest>
+			<classpath refid="project.classpath" />
+		</junit>
 	</target>
 
 </project>
