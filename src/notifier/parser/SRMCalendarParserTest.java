@@ -42,8 +42,6 @@ public class SRMCalendarParserTest {
 
 		String expected3 = "notifier.SRM[name=SRM 550,url=/tc?module=MatchDetails&rd=15172,competisionTime=Sat Jul 21 16:00:00 GMT 2012,regiserTime=Sat Jul 21 13:00:00 GMT 2012,count=0]";
 		String actual3 = srms.get(2).toString();
-		System.out.println(expected3);
-		System.out.println(actual3);
 		assertEquals(expected3, actual3);
 	}
 }
