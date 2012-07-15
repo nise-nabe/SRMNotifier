@@ -30,10 +30,6 @@ public class SRMCalendarParser {
 
 	private String url;
 
-	public SRMCalendarParser() {
-		this(null);
-	}
-
 	public SRMCalendarParser(String url) {
 		this.url = url;
 	}
@@ -103,9 +99,5 @@ public class SRMCalendarParser {
 
 	public static SimpleDateFormat getDataFormat() {
 		return format;
-	}
-
-	public List<SRM> parse(String html){
-		return null;
 	}
 }
