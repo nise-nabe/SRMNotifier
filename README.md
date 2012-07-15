@@ -1,4 +1,4 @@
-SRMNotifier
+SRMNotifier [![Build Status](https://secure.travis-ci.org/nise-nabe/SRMNotifier.png?branch=master)](http://travis-ci.org/nise-nabe/SRMNotifier)
 ===========
 
 This is a notifier for topcoder SRM using twitter.
