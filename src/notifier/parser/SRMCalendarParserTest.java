@@ -3,6 +3,8 @@ package notifier.parser;
 import static org.junit.Assert.*;
 
 import java.io.IOException;
+import java.io.FileReader;
+import java.io.BufferedReader;
 
 import notifier.SRM;
 
@@ -36,6 +38,23 @@ class SRMCalendarParserMock extends SRMCalendarParser{
 
 	@Override
 	protected String getContent(String url) throws IOException{
-		return super.getContent(url);
+		FileReader reader = null;
+		if (url.equals("http://community.topcoder.com/tc?module=Static&d1=calendar&d2=thisMonth"))
+		{
+			reader = new FileReader("src/notifier/parser/testdata/calendar.html");
+		}else if(url.equals("http://community.topcoder.com/tc?module=MatchDetails&rd=15170")){
+			reader = new FileReader("src/notifier/parser/testdata/srm1.html");
+		}else if(url.equals("http://community.topcoder.com/tc?module=MatchDetails&rd=15171")){
+			reader = new FileReader("src/notifier/parser/testdata/srm2.html");
+		}else if(url.equals("http://community.topcoder.com/tc?module=MatchDetails&rd=15172")){
+			reader = new FileReader("src/notifier/parser/testdata/srm3.html");
+		}
+		BufferedReader br = new BufferedReader(reader);
+		StringBuilder sb = new StringBuilder();
+		for(String line; (line = br.readLine()) != null;) {
+			sb.append(line);
+			sb.append("\n");
+		}
+		return sb.toString();
 	}
 }

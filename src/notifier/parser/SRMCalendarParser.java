@@ -73,6 +73,7 @@ public class SRMCalendarParser {
 	}
 
 	private List<Date> getTimes(String url) {
+		System.out.println(url);
 		ArrayList<Date> dates = new ArrayList<Date>();
 		try {
 			Document doc = Jsoup.parse(getContent(url));
