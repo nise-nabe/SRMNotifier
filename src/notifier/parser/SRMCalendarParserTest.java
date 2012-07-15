@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.FileReader;
 import java.io.BufferedReader;
 import java.util.List;
+import java.util.Locale;
 
 import notifier.SRM;
 
@@ -25,6 +26,7 @@ public class SRMCalendarParserTest {
 
 	@Test
 	public void printSRMs() throws Exception {
+		Locale.setDefault(Locale.JAPAN);
 		SRMCalendarParserMock parser = new SRMCalendarParserMock("http://community.topcoder.com/tc?module=Static&d1=calendar&d2=thisMonth");
 		List<SRM> srms = parser.getSRMs();
 
