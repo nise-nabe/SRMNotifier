@@ -31,7 +31,9 @@ appengine-web.xml
 #  Java.gitignore
 *.class
 
-build.properties
-
 war/WEB-INF/appengine-generated/
 war/WEB-INF/classes
+
+# gradle gitignore
+.gradle
+build

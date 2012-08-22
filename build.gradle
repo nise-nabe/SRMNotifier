@@ -1,0 +1,14 @@
+apply plugin: 'java'
+
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+  compile 'javax.servlet:servlet-api:latest.integration'
+  compile 'com.google.appengine:appengine:latest.integration'
+  compile 'com.google.appengine.orm:datanucleus-appengine:latest.integration'
+  compile 'org.jsoup:jsoup:latest.integration'
+  compile 'org.twitter4j:twitter4j-appengine:latest.integration'
+  testCompile 'junit:junit:4.+'
+}
