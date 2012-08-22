@@ -1,13 +1,27 @@
-apply plugin: 'java'
+apply plugin: 'gae'
+
+buildscript {
+  repositories {
+    mavenCentral()
+  }
+
+  dependencies {
+    classpath 'org.gradle.api.plugins:gradle-gae-plugin:0.7.6'
+  }
+}
 
 repositories {
   mavenCentral()
 }
 
+gae {
+  downloadSdk = true
+  optimizeWar = true
+}
+
 dependencies {
-  compile 'javax.servlet:servlet-api:latest.integration'
-  compile 'com.google.appengine:appengine:latest.integration'
-  compile 'com.google.appengine.orm:datanucleus-appengine:latest.integration'
+  gaeSdk 'com.google.appengine:appengine-java-sdk:latest.integration'
+
   compile 'org.jsoup:jsoup:latest.integration'
   compile 'org.twitter4j:twitter4j-appengine:latest.integration'
   testCompile 'junit:junit:4.+'
