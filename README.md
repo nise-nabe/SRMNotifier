@@ -3,7 +3,7 @@ SRMNotifier [![Build Status](https://secure.travis-ci.org/nise-nabe/SRMNotifier.
 
 This is a notifier for topcoder SRM using twitter.
 
-https://twitter.com/#!/tc_srm_jp_bot
+https://twitter.com/#!/tc\_srm\_jp\_bot
 
 How to Develop
 --------------
