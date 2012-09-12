@@ -56,13 +56,13 @@ class SRMCalendarParserMock extends SRMCalendarParser{
 		FileReader reader = null;
 		if (url.equals("http://community.topcoder.com/tc?module=Static&d1=calendar&d2=thisMonth"))
 		{
-			reader = new FileReader("src/test/testdata/calendar.html");
+			reader = new FileReader("src/notifier/parser/testdata/calendar.html");
 		}else if(url.equals("http://community.topcoder.com/tc?module=MatchDetails&rd=15170")){
-			reader = new FileReader("src/test/testdata/srm1.html");
+			reader = new FileReader("src/notifier/parser/testdata/srm1.html");
 		}else if(url.equals("http://community.topcoder.com/tc?module=MatchDetails&rd=15171")){
-			reader = new FileReader("src/test/testdata/srm2.html");
+			reader = new FileReader("src/notifier/parser/testdata/srm2.html");
 		}else if(url.equals("http://community.topcoder.com/tc?module=MatchDetails&rd=15172")){
-			reader = new FileReader("src/test/testdata/srm3.html");
+			reader = new FileReader("src/notifier/parser/testdata/srm3.html");
 		}
 		BufferedReader br = new BufferedReader(reader);
 		StringBuilder sb = new StringBuilder();

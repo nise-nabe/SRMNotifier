@@ -1,4 +1,6 @@
 language: java
 
+script: "ant test -f build.test.xml"
+
 jdk:
   - openjdk6
