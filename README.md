@@ -16,4 +16,4 @@ Execute following Command, and edit for your enviromnent.
 
 Run test
 
-    $ gradle test
+    $ ant test
