@@ -68,7 +68,7 @@ public class SRMCalendarParser {
 					result.add(srm);
 					log.info("SRMデータ解析 : " + srm);
 				} catch (Exception e) {
-					log.warning(e.getMessage());
+					log.severe(e.getMessage());
 				}
 			}
 		} catch (Exception e) {
