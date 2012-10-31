@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
 import java.text.SimpleDateFormat;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -55,16 +56,20 @@ public class SRMCalendarParser {
 			Document doc = Jsoup.parse(getContent(url));
 			log.info("カレンダー取得 from " + url);
 			for(Element elem : doc.getElementsByClass("srm")){
-				Element link = elem.getElementsByTag("a").get(0);
-				SRM srm = new SRM();
-				srm.setName(link.text());
-				srm.setUrl(link.attr("href"));
-				List<Date> dates = getTimes("http://community.topcoder.com" + srm.getUrl());
-				srm.setRegisterTime(dates.get(0));
-				srm.setCompetisionTime(dates.get(1));
-				srm.setCount(0);
-				result.add(srm);
-				log.info("SRMデータ解析 : " + srm);
+				try {
+					Element link = elem.getElementsByTag("a").get(0);
+					SRM srm = new SRM();
+					srm.setName(link.text());
+					srm.setUrl(link.attr("href"));
+					List<Date> dates = getTimes("http://community.topcoder.com" + srm.getUrl());
+					srm.setRegisterTime(dates.get(0));
+					srm.setCompetisionTime(dates.get(1));
+					srm.setCount(0);
+					result.add(srm);
+					log.info("SRMデータ解析 : " + srm);
+				} catch (Exception e) {
+					log.warning(e.getMessage());
+				}
 			}
 		} catch (Exception e) {
 			log.warning(e.getMessage());
@@ -72,25 +77,22 @@ public class SRMCalendarParser {
 		return result;
 	}
 
-	private List<Date> getTimes(String url) {
+	private List<Date> getTimes(String url) throws IOException, ParseException {
 		ArrayList<Date> dates = new ArrayList<Date>();
-		try {
-			Document doc = Jsoup.parse(getContent(url));
-			String day = "";
-			for(Element elem: doc.getElementsByClass("statText")) {
-				String text = elem.text().replaceAll("\\s", "");
-				if (Pattern.matches("..\\..+", text)) {
-					day = text;
-				} else {
-					SimpleDateFormat format2 = new SimpleDateFormat(
-							"MM.dd.yyyyhh:mmaz", Locale.US);
-					Date parse = format2.parse(day + text);
-					dates.add(parse);
-					log.info("データ取得 from " + url + ",date=" + day + text
-							+ " to " + parse + " and " + format.format(parse));
-				}
+		Document doc = Jsoup.parse(getContent(url));
+		String day = "";
+		for(Element elem: doc.getElementsByClass("statText")) {
+			String text = elem.text().replaceAll("\\s", "");
+			if (Pattern.matches("..\\..+", text)) {
+				day = text;
+			} else {
+				SimpleDateFormat format2 = new SimpleDateFormat(
+						"MM.dd.yyyyhh:mmaz", Locale.US);
+				Date parse = format2.parse(day + text);
+				dates.add(parse);
+				log.info("データ取得 from " + url + ",date=" + day + text
+						+ " to " + parse + " and " + format.format(parse));
 			}
-		} catch (Exception e) {
 		}
 		return dates;
 	}
