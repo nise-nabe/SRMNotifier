@@ -33,6 +33,7 @@
 			<batchtest fork="yes" todir="reports">
 				<fileset dir="src/">
 					<include name="**/*Test.java"/>
+					<exclude name="notifier/TwitterManagerTest.java"/>
 				</fileset>
 			</batchtest>
 			<classpath refid="project.classpath" />
