@@ -3,7 +3,7 @@ SRMNotifier [![Build Status](https://secure.travis-ci.org/nise-nabe/SRMNotifier.
 
 This is a notifier for topcoder SRM using twitter.
 
-https://twitter.com/#!/tc\_srm\_jp\_bot
+[twitter bot](https://twitter.com/#!/tc_srm_jp_bot)
 
 How to Develop
 --------------
@@ -17,3 +17,7 @@ Execute following Command, and edit for your enviromnent.
 Run test
 
     $ ant test
+
+Run server for develop. See more information when the server start.
+
+    $ ant runserver
