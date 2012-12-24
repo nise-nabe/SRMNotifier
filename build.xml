@@ -43,7 +43,7 @@
 			includeantruntime="false" />
 	</target>
 
-	<target name="datanucleusenhance"
+	<target name="datanucleusenhance" depends="compile"
 		description="Performs JDO enhancement on compiled data classes.">
 		<enhance_war war="war" />
 	</target>
