@@ -36,10 +36,12 @@ public class SRMUpdaterServlet extends HttpServlet {
 					+ SRMCalendarParser.getDataFormat().format(now) + "]");
 			updateSRM(pm, now, "thisMonth");
 			// 次の月のSRM更新を一日に一回
+			if (cal.get(Calendar.HOUR_OF_DAY) == updateScheduleHour) {
 				cal.add(Calendar.MONTH, 1);
 				int nextMonth = cal.get(Calendar.MONTH);
 				int year = cal.get(Calendar.YEAR) % 100;
 				updateSRM(pm, now, months[nextMonth] + "_" + year);
+			}
 		} catch (Exception e) {
 			log.warning(e.getMessage());
 		} finally {
