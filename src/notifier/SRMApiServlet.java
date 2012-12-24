@@ -44,6 +44,7 @@ public class SRMApiServlet extends HttpServlet {
 		extent.closeAll();
 		String result = gson.toJson(srms.toArray(new SRM[0]));
 		log.info("generated result: " + result);
+		resp.setContentType("application/json");
 		resp.getWriter().println(result);
 	}
 
