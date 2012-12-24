@@ -20,6 +20,14 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<servlet-name>SRMUpdater</servlet-name>
 		<url-pattern>/updater</url-pattern>
 	</servlet-mapping>
+	<servlet>
+		<servlet-name>SRMApi</servlet-name>
+		<servlet-class>notifier.SRMApiServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SRMApi</servlet-name>
+		<url-pattern>/api</url-pattern>
+	</servlet-mapping>
 	<security-constraint>
 		<web-resource-collection>
 			<url-pattern>/cron/*</url-pattern>
