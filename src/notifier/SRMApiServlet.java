@@ -1,7 +1,9 @@
 package notifier;
 
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.text.SimpleDateFormat;
+import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -19,7 +21,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import notifier.parser.SRMCalendarParser;
 
-import com.google.gson.Gson; 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonPrimitive;
+import com.google.gson.JsonSerializer;
+import com.google.gson.JsonSerializationContext;
 
 @SuppressWarnings("serial")
 public class SRMApiServlet extends HttpServlet {
@@ -36,7 +43,11 @@ public class SRMApiServlet extends HttpServlet {
 		log.info("[" + now + ":" + format.format(now) + "]");
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		Extent<SRM> extent = pm.getExtent(SRM.class, true);
-		Gson gson = new Gson();
+		Gson gson = new GsonBuilder().registerTypeAdapter(Date.class, new JsonSerializer<Date>() {
+			public JsonElement serialize(Date src, Type typeOfSrc, JsonSerializationContext context) {
+				return new JsonPrimitive(src.getTime());
+			}
+		}).create();
 		List<SRM> srms = new ArrayList<SRM>();
 		for (SRM srm : extent) {
 			srms.add(srm);
