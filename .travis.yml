@@ -4,3 +4,5 @@ script: "ant test -f build.test.xml"
 
 jdk:
   - openjdk6
+  - openjdk7
+  - oraclejdk7
