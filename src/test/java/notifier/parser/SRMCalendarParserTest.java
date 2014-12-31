@@ -52,18 +52,17 @@ class SRMCalendarParserMock extends SRMCalendarParser{
 	}
 
 	@Override
-	protected String getContent(String url) throws IOException{
+	protected String getContent(String url) throws IOException {
 		FileReader reader = null;
 		ClassLoader cl = SRMCalendarParserMock.class.getClassLoader();
 		String path = "";
-		if (url.equals("http://community.topcoder.com/tc?module=Static&d1=calendar&d2=thisMonth"))
-		{
+		if (url.equals("http://community.topcoder.com/tc?module=Static&d1=calendar&d2=thisMonth")) {
 			path = cl.getResource("calendar.html").getPath();
-		}else if(url.equals("http://community.topcoder.com/tc?module=MatchDetails&rd=15170")){
+		} else if (url.equals("http://community.topcoder.com/tc?module=MatchDetails&rd=15170")) {
 			path = cl.getResource("srm1.html").getPath();
-		}else if(url.equals("http://community.topcoder.com/tc?module=MatchDetails&rd=15171")){
+		} else if (url.equals("http://community.topcoder.com/tc?module=MatchDetails&rd=15171")) {
 			path = cl.getResource("srm2.html").getPath();
-		}else if(url.equals("http://community.topcoder.com/tc?module=MatchDetails&rd=15172")){
+		} else if (url.equals("http://community.topcoder.com/tc?module=MatchDetails&rd=15172")) {
 			path = cl.getResource("srm3.html").getPath();
 		}
 		reader = new FileReader(path);
