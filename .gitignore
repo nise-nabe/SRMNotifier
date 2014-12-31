@@ -35,3 +35,11 @@ build.properties
 
 war/WEB-INF/appengine-generated/
 war/WEB-INF/classes
+
+#  Magen.gitignore
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
