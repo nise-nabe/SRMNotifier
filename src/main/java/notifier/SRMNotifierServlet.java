@@ -18,7 +18,6 @@ import javax.servlet.http.HttpServletResponse;
 import notifier.parser.SRMCalendarParser;
 import twitter4j.TwitterException;
 
-@SuppressWarnings("serial")
 public class SRMNotifierServlet extends HttpServlet {
 	private static final Logger log = Logger.getLogger(SRMNotifierServlet.class
 			.getName());

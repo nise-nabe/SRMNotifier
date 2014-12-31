@@ -17,7 +17,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import notifier.parser.SRMCalendarParser;
 
-@SuppressWarnings("serial")
 public class SRMUpdaterServlet extends HttpServlet {
 	private static final Logger log = Logger.getLogger(SRMNotifierServlet.class
 			.getName());
