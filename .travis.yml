@@ -1,6 +1,6 @@
 language: java
 
-script: "maven clean test"
+script: "mvn clean test"
 
 jdk:
   - openjdk6
