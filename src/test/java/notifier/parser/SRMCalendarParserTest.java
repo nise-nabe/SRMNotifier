@@ -54,16 +54,19 @@ class SRMCalendarParserMock extends SRMCalendarParser{
 	@Override
 	protected String getContent(String url) throws IOException{
 		FileReader reader = null;
+		ClassLoader cl = SRMCalendarParserMock.class.getClassLoader();
+		String path = "";
 		if (url.equals("http://community.topcoder.com/tc?module=Static&d1=calendar&d2=thisMonth"))
 		{
-			reader = new FileReader("src/notifier/parser/testdata/calendar.html");
+			path = cl.getResource("calendar.html").getPath();
 		}else if(url.equals("http://community.topcoder.com/tc?module=MatchDetails&rd=15170")){
-			reader = new FileReader("src/notifier/parser/testdata/srm1.html");
+			path = cl.getResource("srm1.html").getPath();
 		}else if(url.equals("http://community.topcoder.com/tc?module=MatchDetails&rd=15171")){
-			reader = new FileReader("src/notifier/parser/testdata/srm2.html");
+			path = cl.getResource("srm2.html").getPath();
 		}else if(url.equals("http://community.topcoder.com/tc?module=MatchDetails&rd=15172")){
-			reader = new FileReader("src/notifier/parser/testdata/srm3.html");
+			path = cl.getResource("srm3.html").getPath();
 		}
+		reader = new FileReader(path);
 		BufferedReader br = new BufferedReader(reader);
 		StringBuilder sb = new StringBuilder();
 		for(String line; (line = br.readLine()) != null;) {
