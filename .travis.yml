@@ -1,6 +1,6 @@
 language: java
 
-script: "ant test -f build.test.xml"
+script: "maven clean test"
 
 jdk:
   - openjdk6
