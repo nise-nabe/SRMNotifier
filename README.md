@@ -10,14 +10,13 @@ How to Develop
 
 Execute following Command, and edit for your enviromnent. 
 
-    $ cp src/twitter4j.properties.sample src/twitter4j.properties
-    $ cp war/WEB-INF/appengine-web.xml.sample war/WEB-INF/appengine-web.xml
-    $ cp build.properties.sample build.properties
+    $ cp src/main/resources/twitter4j.properties.sample src/main/resources/twitter4j.properties
+    $ cp src/main/webapp/WEB-INF/appengine-web.xml.sample src/main/webapp/WEB-INF/appengine-web.xml
 
 Run test
 
-    $ ant test
+    $ mvn test
 
 Run server for develop. See more information when the server start.
 
-    $ ant runserver
+    $ mvn compile appengine:enhance appengine:devserver
