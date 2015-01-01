@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
-import java.util.TimeZone;
 import java.util.logging.Logger;
 import java.util.regex.Pattern;
 
@@ -20,14 +19,9 @@ import org.jsoup.nodes.Element;
 
 import notifier.SRM;
 
-public class SRMCalendarParser {
+public class SRMCalendarParser extends CalendarParser {
 	private static final Logger log = Logger.getLogger(SRMCalendarParser.class
 			.getName());
-	private static final SimpleDateFormat format;
-	static {
-		format = new SimpleDateFormat("yyyy年MM月dd日（E） HH時mm分", Locale.JAPAN);
-		format.setTimeZone(TimeZone.getTimeZone("GMT+09:00"));
-	}
 
 	private String url;
 
@@ -49,6 +43,7 @@ public class SRMCalendarParser {
 		return sb.toString();
 	}
 
+	@Override
 	public List<SRM> getSRMs() {
 		ArrayList<SRM> result = new ArrayList<SRM>();
 		try {
@@ -94,9 +89,5 @@ public class SRMCalendarParser {
 			}
 		}
 		return dates;
-	}
-
-	public static SimpleDateFormat getDataFormat() {
-		return format;
 	}
 }

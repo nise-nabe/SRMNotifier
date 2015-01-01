@@ -15,7 +15,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import notifier.parser.SRMCalendarParser;
+import notifier.parser.CalendarParser;
+import notifier.parser.GoogleCalendarParser;
 
 public class SRMUpdaterServlet extends HttpServlet {
 	private static final Logger log = Logger.getLogger(SRMNotifierServlet.class
@@ -32,7 +33,7 @@ public class SRMUpdaterServlet extends HttpServlet {
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		try {
 			log.info("[" + now + ":"
-					+ SRMCalendarParser.getDataFormat().format(now) + "]");
+					+ CalendarParser.getDataFormat().format(now) + "]");
 			updateSRM(pm, now, "thisMonth");
 			// 次の月のSRM更新を一日に一回
 			if (cal.get(Calendar.HOUR_OF_DAY) == updateScheduleHour) {
@@ -49,9 +50,7 @@ public class SRMUpdaterServlet extends HttpServlet {
 	}
 
 	private void updateSRM(PersistenceManager pm, Date now, String month) {
-		SRMCalendarParser parser = new SRMCalendarParser(
-				"http://community.topcoder.com/tc?module=Static&d1=calendar&d2="
-						+ month);
+		CalendarParser parser = new GoogleCalendarParser();
 		List<SRM> updates = parser.getSRMs();
 		Extent<SRM> extent = pm.getExtent(SRM.class, true);
 		for (SRM srm : extent) {
