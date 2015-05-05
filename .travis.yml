@@ -5,3 +5,5 @@ script: "mvn clean test"
 jdk:
   - openjdk7
   - oraclejdk7
+
+sudo: false
