@@ -15,14 +15,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import notifier.parser.SRMCalendarParser;
+import notifier.parser.CalendarParser;
 import twitter4j.TwitterException;
 
 public class SRMNotifierServlet extends HttpServlet {
 	private static final Logger log = Logger.getLogger(SRMNotifierServlet.class
 			.getName());
 	private static final String hash = "#Topcoder #SRM";
-	private static final SimpleDateFormat format = SRMCalendarParser.getDataFormat();
+	private static final SimpleDateFormat format = CalendarParser.getDataFormat();
 	private static final String[] msgs = { "開始24時間前です", "開始12時間前です",
 			"登録を開始しました", "開始1時間前です", "開始30分前です", "開始15分前です", "開始5分前です",
 			"Coding Phase を開始しました", "Coding Phase を終了しました",
