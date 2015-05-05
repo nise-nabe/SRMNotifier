@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import notifier.parser.SRMCalendarParser;
+import notifier.parser.CalendarParser;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -28,7 +28,7 @@ import com.google.gson.JsonSerializationContext;
 public class SRMApiServlet extends HttpServlet {
 	private static final Logger log = Logger.getLogger(SRMNotifierServlet.class
 			.getName());
-	private static final SimpleDateFormat format = SRMCalendarParser.getDataFormat();
+	private static final SimpleDateFormat format = CalendarParser.getDataFormat();
 
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {

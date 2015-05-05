@@ -53,7 +53,7 @@ public class GoogleCalendarParser extends CalendarParser {
             Calendar client = new Calendar.Builder(httpTransport, jsonFactory, credential).setApplicationName("srmnotifier").build();
             Events events = client.events().list(calendarId)
                     .setTimeMin(new DateTime(new Date()))
-                    .setTimeZone(SRMCalendarParser.getDataFormat().getTimeZone().toString())
+                    .setTimeZone(CalendarParser.getDataFormat().getTimeZone().toString())
                     .execute();
             for (Event event : events.getItems()) {
                 log.info("カレンダーデータ : " + event);
