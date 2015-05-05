@@ -1,8 +1,0 @@
-cron:
-- descrption: notify
-  url: /notifier
-  schedulex: every 1 minutes
-
-- descrption: update
-  url: /updater
-  schedule: every 1 hours
