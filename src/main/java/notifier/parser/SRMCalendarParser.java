@@ -19,6 +19,7 @@ import org.jsoup.nodes.Element;
 
 import notifier.SRM;
 
+@Deprecated
 public class SRMCalendarParser extends CalendarParser {
 	private static final Logger log = Logger.getLogger(SRMCalendarParser.class
 			.getName());
