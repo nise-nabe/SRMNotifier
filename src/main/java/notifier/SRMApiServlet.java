@@ -44,7 +44,7 @@ public class SRMApiServlet extends HttpServlet {
 				return new JsonPrimitive(src.getTime());
 			}
 		}).create();
-		List<SRM> srms = new ArrayList<SRM>();
+		List<SRM> srms = new ArrayList<>();
 		for (SRM srm : extent) {
 			srms.add(srm);
 		}
