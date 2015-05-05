@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Locale;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.jdo.PersistenceManager;
@@ -75,7 +76,7 @@ public class SRMNotifierServlet extends HttpServlet {
 						+ dates[srm.getCount()]);
 			}
 		} catch (Exception e) {
-			log.warning(e.getMessage());
+			log.log(Level.WARNING, "追加時にエラー", e);
 		} finally {
 			pm.close();
 		}

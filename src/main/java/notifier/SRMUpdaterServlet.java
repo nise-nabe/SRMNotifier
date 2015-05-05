@@ -20,8 +20,7 @@ import notifier.parser.CalendarParser;
 import notifier.parser.GoogleCalendarParser;
 
 public class SRMUpdaterServlet extends HttpServlet {
-	private static final Logger log = Logger.getLogger(SRMNotifierServlet.class
-			.getName());
+	private static final Logger log = Logger.getLogger(SRMNotifierServlet.class .getName());
 	private static final int updateScheduleHour = 15;
 	private static final String[] months = { "jan", "feb", "mar", "apr", "may",
 			"jun", "jul", "aug", "sep", "oct", "nov", "dec" };
@@ -33,8 +32,7 @@ public class SRMUpdaterServlet extends HttpServlet {
 		Date now = cal.getTime();
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		try {
-			log.info("[" + now + ":"
-					+ CalendarParser.getDataFormat().format(now) + "]");
+			log.info("[" + now + ":" + CalendarParser.getDataFormat().format(now) + "]");
 			updateSRM(pm, now, "thisMonth");
 			// 次の月のSRM更新を一日に一回
 			if (cal.get(Calendar.HOUR_OF_DAY) == updateScheduleHour) {
@@ -57,9 +55,8 @@ public class SRMUpdaterServlet extends HttpServlet {
 		for (SRM srm : extent) {
 			log.info("格納済みデータ" + srm);
 			// check update
-			for (SRM update : new ArrayList<SRM>(updates)) {
-				if ((srm.getName().equals(update.getName()))
-						&& !srm.equals(update)) {
+			for (SRM update : new ArrayList<>(updates)) {
+				if ((srm.getName().equals(update.getName())) && !srm.equals(update)) {
 					srm.update(update);
 					updates.remove(update);
 					log.info(srm.getName() + " のデータを更新 to " + srm);
@@ -76,7 +73,7 @@ public class SRMUpdaterServlet extends HttpServlet {
 					pm.makePersistent(update);
 					log.info(update.getName() + " のデータを追加 " + update);
 				} catch (Exception e) {
-					log.warning(e.getMessage());
+					log.log(Level.WARNING, "追加時にエラー", e);
 				}
 			}
 		}
