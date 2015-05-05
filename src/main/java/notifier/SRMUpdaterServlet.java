@@ -6,6 +6,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.jdo.Extent;
@@ -43,7 +44,7 @@ public class SRMUpdaterServlet extends HttpServlet {
 				updateSRM(pm, now, months[nextMonth] + "_" + year);
 			}
 		} catch (Exception e) {
-			log.warning(e.getMessage());
+			log.log(Level.WARNING, "更新時にエラー", e);
 		} finally {
 			pm.close();
 		}
