@@ -20,7 +20,7 @@ import notifier.parser.CalendarParser;
 import notifier.parser.GoogleCalendarParser;
 
 public class SRMUpdaterServlet extends HttpServlet {
-	private static final Logger log = Logger.getLogger(SRMNotifierServlet.class .getName());
+	private static final Logger log = Logger.getLogger(SRMNotifierServlet.class.getName());
 	private static final int updateScheduleHour = 15;
 	private static final String[] months = { "jan", "feb", "mar", "apr", "may",
 			"jun", "jul", "aug", "sep", "oct", "nov", "dec" };

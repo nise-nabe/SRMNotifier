@@ -20,8 +20,7 @@ import notifier.parser.CalendarParser;
 import twitter4j.TwitterException;
 
 public class SRMNotifierServlet extends HttpServlet {
-	private static final Logger log = Logger.getLogger(SRMNotifierServlet.class
-			.getName());
+	private static final Logger log = Logger.getLogger(SRMNotifierServlet.class.getName());
 	private static final String hash = "#Topcoder #SRM";
 	private static final SimpleDateFormat format = CalendarParser.getDataFormat();
 	private static final String[] msgs = { "開始24時間前です", "開始12時間前です",
@@ -42,21 +41,19 @@ public class SRMNotifierServlet extends HttpServlet {
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 
 		try {
-			log.info("更新時間（分）：" + cal.get(Calendar.MINUTE) + "　更新時間（時）："
-					+ cal.get(Calendar.HOUR_OF_DAY));
+			log.info("更新時間（分）：" + cal.get(Calendar.MINUTE) + "　更新時間（時）：" + cal.get(Calendar.HOUR_OF_DAY));
 			SRM srm = getNearestSRM(pm);
 			log.info("srm :" + srm.toString());
 
 			log.info("compeTime :" + format.format(srm.getCompetisionTime()));
 
-			Date target = new Date(srm.getCompetisionTime().getTime()
-					+ dates[srm.getCount()]);
+			Date target = new Date(srm.getCompetisionTime().getTime() + dates[srm.getCount()]);
 			log.info("通知判定 [now:" + format.format(now) + "].after[target:"
 					+ format.format(target) + "]==" + now.after(target));
 			log.info("通知判定 " + now.after(target));
 			while (now.after(target)) {
 				// 通知判定
-				if (now.before(new Date(target.getTime() + toLong(1, 4)))) { //
+				if (now.before(new Date(target.getTime() + toLong(1, 4)))) {
 					String notifyDate = "at " + format.format(target);
 					if (srm.getCount() < 8) {
 						notifyDate = "開始時間: " + format.format(srm.getCompetisionTime());
@@ -72,8 +69,7 @@ public class SRMNotifierServlet extends HttpServlet {
 					log.info(srm.getName() + "のデータを削除");
 					break;
 				}
-				target = new Date(srm.getCompetisionTime().getTime()
-						+ dates[srm.getCount()]);
+				target = new Date(srm.getCompetisionTime().getTime() + dates[srm.getCount()]);
 			}
 		} catch (Exception e) {
 			log.log(Level.WARNING, "追加時にエラー", e);
@@ -120,8 +116,7 @@ public class SRMNotifierServlet extends HttpServlet {
 	private void postNextSRM(SRM srm) throws TwitterException {
 		// Twitter twitter;
 		// 次の SRM000 は 20XX年XX月XX日（Ｘ） XX時XX分 からです #Topcoder #SRM
-		String status = "次の " + srm.getName() + " は "
-				+ format.format(srm.getCompetisionTime()) + " からです " + hash;
+		String status = "次の " + srm.getName() + " は " + format.format(srm.getCompetisionTime()) + " からです " + hash;
 		TwitterManager.post(status);
 	}
 
