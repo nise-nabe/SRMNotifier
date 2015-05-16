@@ -21,9 +21,6 @@ import notifier.parser.GoogleCalendarParser;
 
 public class SRMUpdaterServlet extends HttpServlet {
 	private static final Logger log = Logger.getLogger(SRMNotifierServlet.class.getName());
-	private static final int updateScheduleHour = 15;
-	private static final String[] months = { "jan", "feb", "mar", "apr", "may",
-			"jun", "jul", "aug", "sep", "oct", "nov", "dec" };
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -33,14 +30,7 @@ public class SRMUpdaterServlet extends HttpServlet {
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		try {
 			log.info("[" + now + ":" + CalendarParser.getDataFormat().format(now) + "]");
-			updateSRM(pm, now, "thisMonth");
-			// 次の月のSRM更新を一日に一回
-			if (cal.get(Calendar.HOUR_OF_DAY) == updateScheduleHour) {
-				cal.add(Calendar.MONTH, 1);
-				int nextMonth = cal.get(Calendar.MONTH);
-				int year = cal.get(Calendar.YEAR) % 100;
-				updateSRM(pm, now, months[nextMonth] + "_" + year);
-			}
+			updateSRM(pm, now);
 		} catch (Exception e) {
 			log.log(Level.WARNING, "更新時にエラー", e);
 		} finally {
@@ -48,7 +38,7 @@ public class SRMUpdaterServlet extends HttpServlet {
 		}
 	}
 
-	private void updateSRM(PersistenceManager pm, Date now, String month) {
+	private void updateSRM(PersistenceManager pm, Date now) {
 		CalendarParser parser = new GoogleCalendarParser();
 		List<SRM> updates = parser.getSRMs();
 		Extent<SRM> extent = pm.getExtent(SRM.class, true);
