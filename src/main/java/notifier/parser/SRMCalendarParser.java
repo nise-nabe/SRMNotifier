@@ -45,7 +45,7 @@ public class SRMCalendarParser extends CalendarParser {
 
 	@Override
 	public List<SRM> getSRMs() {
-		ArrayList<SRM> result = new ArrayList<SRM>();
+		ArrayList<SRM> result = new ArrayList<>();
 		try {
 			Document doc = Jsoup.parse(getContent(url));
 			log.info("カレンダー取得 from " + url);
