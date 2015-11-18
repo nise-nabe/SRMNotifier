@@ -28,7 +28,7 @@ public class SRMNotifierServlet extends HttpServlet {
 			"Coding Phase を開始しました", "Coding Phase を終了しました",
 			"Challenge Phase を開始しました", "終了しました" };
 	private static final long[] dates = { -toLong(24, 60), -toLong(12, 60),
-			-toLong(3, 60), -toLong(1, 60), -toLong(1, 30), -toLong(1, 15),
+			-toLong(4, 60), -toLong(1, 60), -toLong(1, 30), -toLong(1, 15),
 			-toLong(1, 5), 0, toLong(1, 75), toLong(1, 80), toLong(1, 95) };
 
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
