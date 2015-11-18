@@ -22,7 +22,7 @@
         <dependency>
             <groupId>com.google.appengine</groupId>
             <artifactId>appengine-api-1.0-sdk</artifactId>
-            <version>1.9.22</version>
+            <version>1.9.28</version>
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -33,12 +33,12 @@
         <dependency>
             <groupId>org.twitter4j</groupId>
             <artifactId>twitter4j-core</artifactId>
-            <version>4.0.3</version>
+            <version>4.0.4</version>
         </dependency>
         <dependency>
             <groupId>org.jsoup</groupId>
             <artifactId>jsoup</artifactId>
-            <version>1.8.2</version>
+            <version>1.8.3</version>
         </dependency>
         <dependency>
             <groupId>com.google.code.gson</groupId>
@@ -70,7 +70,7 @@
         <dependency>
             <groupId>com.google.apis</groupId>
             <artifactId>google-api-services-calendar</artifactId>
-            <version>v3-rev127-1.20.0</version>
+            <version>v3-rev152-1.20.0</version>
         </dependency>
 
         <!-- Test Dependencies -->
@@ -130,7 +130,7 @@
             <plugin>
                 <groupId>com.google.appengine</groupId>
                 <artifactId>appengine-maven-plugin</artifactId>
-                <version>1.9.22</version>
+                <version>1.9.28</version>
                 <configuration>
                     <enableJarClasses>false</enableJarClasses>
                     <!-- Comment in the below snippet to bind to all IPs instead of just localhost -->
