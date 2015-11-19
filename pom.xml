@@ -72,6 +72,12 @@
             <artifactId>google-api-services-calendar</artifactId>
             <version>v3-rev153-1.20.0</version>
         </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.16.6</version>
+            <scope>provided</scope>
+        </dependency>
 
         <!-- Test Dependencies -->
         <dependency>
