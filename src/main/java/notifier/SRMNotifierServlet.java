@@ -45,9 +45,9 @@ public class SRMNotifierServlet extends HttpServlet {
 			SRM srm = getNearestSRM(pm);
 			log.info("srm :" + srm.toString());
 
-			log.info("compeTime :" + format.format(srm.getCompetisionTime()));
+			log.info("compeTime :" + format.format(srm.getCompetitionTime()));
 
-			Date target = new Date(srm.getCompetisionTime().getTime() + dates[srm.getCount()]);
+			Date target = new Date(srm.getCompetitionTime().getTime() + dates[srm.getCount()]);
 			log.info("通知判定 [now:" + format.format(now) + "].after[target:"
 					+ format.format(target) + "]==" + now.after(target));
 			log.info("通知判定 " + now.after(target));
@@ -56,7 +56,7 @@ public class SRMNotifierServlet extends HttpServlet {
 				if (now.before(new Date(target.getTime() + toLong(1, 4)))) {
 					String notifyDate = "at " + format.format(target);
 					if (srm.getCount() < 8) {
-						notifyDate = "開始時間: " + format.format(srm.getCompetisionTime());
+						notifyDate = "開始時間: " + format.format(srm.getCompetitionTime());
 					}
 					post(msgs[srm.getCount()], srm, notifyDate);
 				}
@@ -69,7 +69,7 @@ public class SRMNotifierServlet extends HttpServlet {
 					log.info(srm.getName() + "のデータを削除");
 					break;
 				}
-				target = new Date(srm.getCompetisionTime().getTime() + dates[srm.getCount()]);
+				target = new Date(srm.getCompetitionTime().getTime() + dates[srm.getCount()]);
 			}
 		} catch (Exception e) {
 			log.log(Level.WARNING, "追加時にエラー", e);
@@ -116,7 +116,7 @@ public class SRMNotifierServlet extends HttpServlet {
 	private void postNextSRM(SRM srm) throws TwitterException {
 		// Twitter twitter;
 		// 次の SRM000 は 20XX年XX月XX日（Ｘ） XX時XX分 からです #Topcoder #SRM
-		String status = "次の " + srm.getName() + " は " + format.format(srm.getCompetisionTime()) + " からです " + hash;
+		String status = "次の " + srm.getName() + " は " + format.format(srm.getCompetitionTime()) + " からです " + hash;
 		TwitterManager.post(status);
 	}
 

@@ -19,7 +19,7 @@ public class SRM {
 	@Persistent
 	private Date registerTime;
 	@Persistent
-	private Date competisionTime;
+	private Date competitionTime;
 	@Persistent
 	private int count;
 
@@ -27,7 +27,7 @@ public class SRM {
 		this.name = update.name;
 		this.url = update.url;
 		this.registerTime = update.registerTime;
-		this.competisionTime = update.competisionTime;
+		this.competitionTime = update.competitionTime;
 		this.count = update.count;
 	}
 }
