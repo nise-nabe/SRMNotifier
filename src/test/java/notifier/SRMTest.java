@@ -36,7 +36,7 @@ public class SRMTest{
 	}
 
 	@Test
-	public void competisionTime() {
+	public void competitionTime() {
 		Date date = Calendar.getInstance().getTime();
 		srm.setCompetitionTime(date);
 		assertEquals(date, srm.getCompetitionTime());

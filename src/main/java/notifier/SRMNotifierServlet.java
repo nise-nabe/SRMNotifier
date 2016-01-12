@@ -82,7 +82,7 @@ public class SRMNotifierServlet extends HttpServlet {
 	private SRM getNearestSRM(PersistenceManager pm) {
 		Query query = pm.newQuery(SRM.class);
 		query.setRange(0, 1);
-		query.setOrdering("competisionTime");
+		query.setOrdering("competitionTime");
 		List<SRM> srms = (List<SRM>) query.execute();
 		SRM srm = srms.get(0);
 		log.info("最近傍SRM取得:" + srm);
@@ -94,7 +94,7 @@ public class SRMNotifierServlet extends HttpServlet {
 	private SRM getSecondNearestSRM(PersistenceManager pm) {
 		Query query = pm.newQuery(SRM.class);
 		query.setRange(1, 2);
-		query.setOrdering("competisionTime");
+		query.setOrdering("competitionTime");
 		List<SRM> srms = (List<SRM>) query.execute();
 		SRM srm = srms.get(0);
 		log.info("準最近傍SRM取得:" + srm);
