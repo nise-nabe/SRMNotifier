@@ -68,7 +68,9 @@ public class SRMNotifierServlet extends HttpServlet {
 
 					// 消すついでに次のSRMの時間も告知
 					SRM nextSrm = getNearestSRM(pm);
-					postNextSRM(nextSrm);
+					if (nextSrm != null) { // null チェックやめたい
+						postNextSRM(nextSrm);
+					}
 					break;
 				}
 				target = new Date(srm.getCompetitionTime().getTime() + dates[srm.getCount()]);
@@ -86,6 +88,9 @@ public class SRMNotifierServlet extends HttpServlet {
 		query.setRange(0, 1);
 		query.setOrdering("competitionTime");
 		List<SRM> srms = (List<SRM>) query.execute();
+		if (srms.isEmpty()) {
+			return null;
+		}
 		SRM srm = srms.get(0);
 		log.info("最近傍SRM取得:" + srm);
 		return srm;
