@@ -91,18 +91,6 @@ public class SRMNotifierServlet extends HttpServlet {
 		return srm;
 	}
 
-	// SRMが終わったときに次のSRMを通知するため．３・１２金
-	@SuppressWarnings("unchecked")
-	private SRM getSecondNearestSRM(PersistenceManager pm) {
-		Query query = pm.newQuery(SRM.class);
-		query.setRange(1, 2);
-		query.setOrdering("competitionTime");
-		List<SRM> srms = (List<SRM>) query.execute();
-		SRM srm = srms.get(0);
-		log.info("準最近傍SRM取得:" + srm);
-		return srm;
-	}
-
 	private void post(String msg, SRM srm, String date) throws TwitterException {
 		// Twitter twitter;
 		// SRM 463 終了しました at 2010年03月02日（火） 22時35分 #Topcoder #SRM
