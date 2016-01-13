@@ -63,10 +63,12 @@ public class SRMNotifierServlet extends HttpServlet {
 				srm.setCount(srm.getCount() + 1);
 				// SRM終了判定
 				if (srm.getCount() >= dates.length) {
-					SRM nextSrm = getSecondNearestSRM(pm);
-					postNextSRM(nextSrm); // 消すついでに次のSRMの時間も告知
 					pm.deletePersistent(srm);
 					log.info(srm.getName() + "のデータを削除");
+
+					// 消すついでに次のSRMの時間も告知
+					SRM nextSrm = getNearestSRM(pm);
+					postNextSRM(nextSrm);
 					break;
 				}
 				target = new Date(srm.getCompetitionTime().getTime() + dates[srm.getCount()]);
