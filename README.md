@@ -1,7 +1,8 @@
 SRMNotifier
 ===========
 
-[![Build Status](https://secure.travis-ci.org/nise-nabe/SRMNotifier.png?branch=master)](http://travis-ci.org/nise-nabe/SRMNotifier) [![GitHub release](https://img.shields.io/github/release/nise-nabe/SRMNotifier.svg)]()
+[![][build img]][build]
+[![][release img]][release]
 
 This is a notifier for topcoder SRM using twitter.
 
@@ -22,3 +23,9 @@ Run test
 Run server for develop. See more information when the server start.
 
     $ mvn compile appengine:enhance appengine:devserver
+
+[build]:http://travis-ci.org/nise-nabe/SRMNotifier
+[build img]:https://secure.travis-ci.org/nise-nabe/SRMNotifier.png?branch=master
+
+[release]:https://github.com/nise-nabe/SRMNotifier/releases
+[release img]:https://img.shields.io/github/release/nise-nabe/SRMNotifier.svg
