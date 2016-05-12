@@ -99,11 +99,16 @@ public class SRMNotifierServlet extends HttpServlet {
 	private void post(String msg, SRM srm, String date) throws TwitterException {
 		// Twitter twitter;
 		// SRM 463 終了しました at 2010年03月02日（火） 22時35分 #Topcoder #SRM
-		String status = srm.getName() + " " + msg + " " + date;
+		String status = " " + msg + " " + date;
 		if (2 <= srm.getCount() && srm.getCount() <= 7) {
 			status += " Arena -> http://bit.ly/gloK93 WebArena -> https://arena.topcoder.com/";
 		}
 		status += " " + hash;
+		if ((srm.getName() + status).length() > 140) {
+			status = srm.getName().substring(0, 140 - status.length()) + status;
+		} else {
+			status = srm.getName() + status;
+		}
 		TwitterManager.post(status);
 	}
 
