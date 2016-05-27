@@ -9,7 +9,7 @@
     <artifactId>notifier</artifactId>
 
     <properties>
-        <appengine.app.version>1.9.37</appengine.app.version>
+        <appengine.app.version>1.9.38</appengine.app.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -38,7 +38,7 @@
         <dependency>
             <groupId>org.jsoup</groupId>
             <artifactId>jsoup</artifactId>
-            <version>1.9.1</version>
+            <version>1.9.2</version>
         </dependency>
         <dependency>
             <groupId>com.google.code.gson</groupId>
@@ -70,7 +70,7 @@
         <dependency>
             <groupId>com.google.apis</groupId>
             <artifactId>google-api-services-calendar</artifactId>
-            <version>v3-rev185-1.22.0</version>
+            <version>v3-rev187-1.22.0</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
