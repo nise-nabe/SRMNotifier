@@ -45,7 +45,7 @@ public class SRMUpdaterServlet extends HttpServlet {
 			log.info("格納済みデータ" + srm);
 			// check update
 			for (SRM update : new ArrayList<>(updates)) {
-				if ((srm.getName().equals(update.getName())) && !srm.equals(update)) {
+				if ((srm.getKey().equals(update.getKey())) && !srm.equals(update)) {
 					srm.update(update);
 					updates.remove(update);
 					log.info(srm.getName() + " のデータを更新 to " + srm);
