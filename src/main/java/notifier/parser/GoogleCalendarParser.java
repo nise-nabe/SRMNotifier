@@ -64,7 +64,6 @@ public class GoogleCalendarParser extends CalendarParser {
                 SRM srm = new SRM();
                 srm.setKey(event.getId());
                 srm.setName(name);
-                srm.setUrl("");
                 srm.setCompetitionTime(new Date(event.getStart().getDateTime().getValue()));
                 srm.setRegisterTime(new Date(srm.getCompetitionTime().getTime() - 3L * 60 * 60 * 1000));
                 srm.setCount(0);

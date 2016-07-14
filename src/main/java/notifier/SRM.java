@@ -17,8 +17,6 @@ public class SRM {
 	@Persistent
 	private String name;
 	@Persistent
-	private String url;
-	@Persistent
 	private Date registerTime;
 	@Persistent
 	private Date competitionTime;
@@ -27,7 +25,6 @@ public class SRM {
 
 	public void update(SRM update) {
 		this.name = update.name;
-		this.url = update.url;
 		this.registerTime = update.registerTime;
 		this.competitionTime = update.competitionTime;
 		this.count = update.count;
