@@ -23,12 +23,6 @@ public class SRMTest{
 	}
 
 	@Test
-	public void url() {
-		srm.setUrl("srm url");
-		assertEquals("srm url", srm.getUrl());
-	}
-
-	@Test
 	public void registerTime() {
 		Date date = Calendar.getInstance().getTime();
 		srm.setRegisterTime(date);
