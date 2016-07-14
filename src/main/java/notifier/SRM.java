@@ -13,6 +13,8 @@ import javax.jdo.annotations.PrimaryKey;
 @Data
 public class SRM {
 	@PrimaryKey
+	private String key;
+	@Persistent
 	private String name;
 	@Persistent
 	private String url;
