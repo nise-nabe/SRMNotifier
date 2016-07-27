@@ -63,8 +63,8 @@ public class SRMNotifierServlet extends HttpServlet {
 				srm.setCount(srm.getCount() + 1);
 				// SRM終了判定
 				if (srm.getCount() >= dates.length) {
-					pm.deletePersistent(srm);
 					log.info(srm.getName() + "のデータを削除");
+					pm.deletePersistent(srm);
 
 					// 消すついでに次のSRMの時間も告知
 					SRM nextSrm = getNearestSRM(pm);
