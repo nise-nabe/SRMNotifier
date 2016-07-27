@@ -10,6 +10,7 @@
 
     <properties>
         <appengine.app.version>1.9.40</appengine.app.version>
+        <google.calendar.version>v3-rev202-1.22.0</google.calendar.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -70,7 +71,7 @@
         <dependency>
             <groupId>com.google.apis</groupId>
             <artifactId>google-api-services-calendar</artifactId>
-            <version>v3-rev202-1.22.0</version>
+            <version>${google.calendar.version}</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
