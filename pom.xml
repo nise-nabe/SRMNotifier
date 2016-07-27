@@ -9,7 +9,7 @@
     <artifactId>notifier</artifactId>
 
     <properties>
-        <appengine.app.version>1.9.38</appengine.app.version>
+        <appengine.app.version>1.9.40</appengine.app.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -70,7 +70,7 @@
         <dependency>
             <groupId>com.google.apis</groupId>
             <artifactId>google-api-services-calendar</artifactId>
-            <version>v3-rev196-1.22.0</version>
+            <version>v3-rev202-1.22.0</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
