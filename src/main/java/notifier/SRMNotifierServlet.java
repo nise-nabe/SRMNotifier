@@ -43,6 +43,9 @@ public class SRMNotifierServlet extends HttpServlet {
 		try {
 			log.info("更新時間（分）：" + cal.get(Calendar.MINUTE) + "　更新時間（時）：" + cal.get(Calendar.HOUR_OF_DAY));
 			SRM srm = getNearestSRM(pm);
+			if (srm == null) {
+				log.info("通知対象 SRM なし");
+			}
 			log.info("srm :" + srm.toString());
 
 			log.info("compeTime :" + format.format(srm.getCompetitionTime()));
