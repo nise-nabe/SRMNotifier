@@ -9,7 +9,7 @@
     <artifactId>notifier</artifactId>
 
     <properties>
-        <appengine.app.version>1.9.40</appengine.app.version>
+        <appengine.app.version>1.9.42</appengine.app.version>
         <google.calendar.version>v3-rev202-1.22.0</google.calendar.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
