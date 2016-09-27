@@ -45,6 +45,7 @@ public class SRMNotifierServlet extends HttpServlet {
 			SRM srm = getNearestSRM(pm);
 			if (srm == null) {
 				log.info("通知対象 SRM なし");
+				return;
 			}
 			log.info("srm :" + srm.toString());
 
